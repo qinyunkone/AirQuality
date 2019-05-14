@@ -1,4 +1,3 @@
-# AirQuality
-Crawling the air quality of prefecture-level cities
+# My-Spider
 
-Try to crawl the air quality of prefecture-level cities in China.
+Recording my crawler code
