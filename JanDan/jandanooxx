@@ -1,64 +1,38 @@
 import requests
-import os
-from base64 import b64decode
+from bs4 import BeautifulSoup
+import lxml
 import time
+import os
 
 
-def open_url(url):  #打开目标网页
-    response = requests.get(url)
-    html = response.content
-
-    return html
-
-
-def find_imgs(url):  #获取当前页面所有图片的链接
-    html = open_url(url).decode('utf-8')
-    
-    img_addrs = []  #保存图片链接
-    img_hash = []  #保存图片hash
-
-    start = html.find('img-hash')
-    while start != -1:
-        end = html.find('<', start)
-        img_hash.append(html[start+10 : end])
-        start = html.find('img-hash', end)
-    
-    for i in range(len(img_hash)):
-        imgurl = 'http:' + b64decode(img_hash[i]).decode('utf-8')
-        img_addrs.append(imgurl)
-    
-    return img_addrs
-
-
-def save_img(img_addrs):  #保存图片
-    for each in img_addrs:
-        file_name = str(each).split('/')[-1]
-        
-        with open(file_name, 'wb') as f:
-            img = open_url(str(each))
-            f.write(img)
-
-
-def main(pages = 2):  #主程序
+def ooxx(pages=2):
     folder = 'OOXX'
-    os.mkdir(folder)  #创建目录
-    os.chdir(folder)  #改变当前目录
-    
-    url = 'http://jandan.net/ooxx/'
-    html = open_url(url).decode('utf-8')
+    os.mkdir(folder)
+    os.chdir(folder)
 
-    start = html.find('current-comment-page') + 23
-    end = html.find(']', start)
-    pages_num = int(html[start : end])  #获取总页码
+    url = 'http://jandan.net/ooxx/'
+    time.sleep(1)
+    req = requests.get(url).text
+    soup = BeautifulSoup(req, 'lxml')
+
+    pages_num = int(soup.find('span', class_='current-comment-page').text[1:-1])
 
     for i in range(pages):
         pages_num -= i
         page_url = url + 'page-' + str(pages_num) + '#comments'
-        img_addrs = find_imgs(page_url)
-        save_img(img_addrs)
-        
         time.sleep(1)
+        page_req = requests.get(page_url).text
+        page_soup = BeautifulSoup(page_req, 'lxml')
+        
+        for j in page_soup.find_all('img'):
+            img_addrs = 'http:' + j.attrs['src']
+            filename = img_addrs.split('/')[-1]
+
+            with open(filename, 'wb') as f:
+                time.sleep(1)
+                img = requests.get(img_addrs).content
+                f.write(img)
 
 
 if __name__ == '__main__':
-    main(10)
+    ooxx()
