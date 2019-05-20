@@ -1,9 +1,9 @@
-TableofContents
+Table of Contents
 =================
 *[urllib](#urllib)
-*[Request](#request)
-*[urlopen](#urlopen)
-*[urllib](#urllib)
+    *[Request](#request)
+    *[urlopen](#urlopen)
+    *[urllib](#urllib)
 *[Request](#request)
 *[urlopen](#urlopen)
 *[urlencode](#urlencode)
