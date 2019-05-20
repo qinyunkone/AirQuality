@@ -1,6 +1,8 @@
 # My-Spider
 
-## 0. [爬虫学习笔记](https://github.com/qinyunkone/My-Spider/blob/master/tutorial.md)
+
+## 0. [我的爬虫学习笔记](https://colab.research.google.com/drive/19KheX8ihWDixIiqyHY-AvaSOF2MVZLRJ#scrollTo=TpkfiplRiEdV)
+
 
 ## 1. requests+BeautifulSoup 爬取煎蛋网图片
 
@@ -10,7 +12,8 @@
 
 代码：https://github.com/qinyunkone/My-Spider/tree/master/JanDan
 
-## 2. selenium 爬取地级市天气数据
+
+## 2. selenium 爬取地级市空气质量数据
 
 网址：https://www.aqistudy.cn/historydata/
 
