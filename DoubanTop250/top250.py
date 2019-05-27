@@ -30,16 +30,12 @@ def parse_(html):
 
 def main():
     url = 'https://movie.douban.com/top250?start={}'
-    count = 0
     for page in range(10):
         start = page*25
         html = request_(url.format(start))
         time.sleep(0.5)
         for match in parse_(html):
             print(match)
-            count += 1
-            print(count)
-            
 
 
 if __name__ == '__main__':
