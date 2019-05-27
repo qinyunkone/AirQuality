@@ -20,3 +20,12 @@
 目标：爬取地级市空气质量统计数据
 
 代码：https://github.com/qinyunkone/My-Spider/tree/master/AqiStudy
+
+
+## 3. urllib + 正则 爬取豆瓣电影top250
+
+网址：https://movie.douban.com/top250
+
+目标：爬取豆瓣电影top250
+
+代码：https://github.com/qinyunkone/My-Spider/tree/master/DoubanTop250
