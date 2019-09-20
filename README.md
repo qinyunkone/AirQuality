@@ -6,7 +6,7 @@
 
 ## 1. requests + PyQuery 爬取煎蛋网图片
 
-网址：‘http://jandan.net/ooxx/’
+网址：‘http://jandan.net/ooxx/
 
 目标：爬取图片并保存
 
